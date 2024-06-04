@@ -11,6 +11,8 @@ pluginManagement {
             }
         }
         mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev/")
         gradlePluginPortal()
     }
 }
@@ -25,6 +27,8 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev/")
     }
 }
 
@@ -33,3 +37,10 @@ include(":server")
 include(":shared")
 include(":core")
 include(":core:ui")
+include(":feature")
+include(":feature:auth")
+include(":data")
+include(":domain")
+include(":domain:navigation")
+include(":firebase")
+include(":firebase:auth")

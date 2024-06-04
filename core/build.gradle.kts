@@ -37,10 +37,16 @@ kotlin {
     jvm()
 
     sourceSets {
+
         commonMain.dependencies {
             
+
             implementation(libs.coroutines)
             implementation(libs.viewmodel)
+
+            implementation(libs.navigation)
+
+            implementation(libs.koin.core)
         }
     }
 }
