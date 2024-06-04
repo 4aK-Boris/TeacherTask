@@ -14,17 +14,17 @@ kotlin {
         moduleName = "firebase"
         browser {
             commonWebpackConfig {
-                outputFileName = "firebaseConfig.js"
+                outputFileName = "firebase.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
                     static = (static ?: mutableListOf()).apply {
                         // Serve sources to debug inside browser
-                        add("C:\\Users\\nagib\\IdeaProjects\\TeacherTask\\firebase\\src\\wasmJsMain\\kotlin\\teacher\\task\\project\\firebase\\")
                         add(project.projectDir.path)
                     }
                 }
             }
         }
         binaries.executable()
+        generateTypeScriptDefinitions()
     }
 
     androidTarget {
@@ -66,6 +66,15 @@ kotlin {
             implementation("dev.gitlive:firebase-java-sdk:0.4.3")
         }
     }
+}
+
+tasks.named("wasmJsProcessResources") {
+    dependsOn("copyFirebaseApp")
+}
+
+tasks.register<Copy>("copyFirebaseApp") {
+    from("src/wasmJsMain/resources/firebaseApp.mjs")
+    into("../build/js/packages/composeApp/kotlin")
 }
 
 android {

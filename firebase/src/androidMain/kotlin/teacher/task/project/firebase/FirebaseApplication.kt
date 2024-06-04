@@ -10,9 +10,10 @@ import com.google.firebase.initialize
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
+@Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
 actual object FirebaseApplication: KoinComponent {
 
-    val context by inject<Context>()
+    private val context by inject<Context>()
 
     actual fun configureFirebase(): String {
         val options = getFirebaseOptions()

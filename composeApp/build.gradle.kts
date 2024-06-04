@@ -12,8 +12,6 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-println("project.projectDir type: ${project.projectDir.javaClass}")
-
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
@@ -24,15 +22,13 @@ kotlin {
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
                     static = (static ?: mutableListOf()).apply {
                         // Serve sources to debug inside browser
-                        val absolutePathToFirebaseConfig = project.projectDir.path + "/../firebase/build/processedResources/wasmJs/main/"
-                        add(absolutePathToFirebaseConfig)
-                        add(project.projectDir.path + "/../../build/js/packages/firebase/kotlin")
                         add(project.projectDir.path)
                     }
                 }
             }
         }
         binaries.executable()
+        generateTypeScriptDefinitions()
     }
     
     androidTarget {
@@ -64,6 +60,7 @@ kotlin {
             implementation(libs.android.activity.compose)
         }
         commonMain.dependencies {
+
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
@@ -76,6 +73,8 @@ kotlin {
             implementation(libs.navigation)
 
             implementation(libs.koin.core)
+
+            implementation(libs.coroutines)
 
             implementation(projects.shared)
 
