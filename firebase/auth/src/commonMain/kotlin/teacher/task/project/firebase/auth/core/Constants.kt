@@ -1,0 +1,15 @@
+package teacher.task.project.firebase.auth.core
+
+internal const val AVATARS = "avatars"
+internal const val STUDENTS = "students"
+internal const val CONTACTS = "contacts"
+internal const val GROUPS = "groups"
+internal const val SUBJECTS = "subjects"
+internal const val LESSONS = "lessons"
+internal const val TASKS = "tasks"
+internal const val PERIODS = "periods"
+internal const val FIRST_NAME = "first_name"
+internal const val LAST_NAME = "last_name"
+internal const val PATRONYMIC = "patronymic"
+internal const val PHONE_NUMBER = "phone_number"
+internal const val IS_UPDATED_USER_DATA = "is_updated_user_data"

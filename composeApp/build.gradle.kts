@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
+import org.gradle.api.file.Directory
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -27,12 +28,13 @@ kotlin {
             }
         }
         binaries.executable()
+        generateTypeScriptDefinitions()
     }
     
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+            jvmTarget.set(JvmTarget.JVM_17)
         }
     }
     
@@ -53,17 +55,32 @@ kotlin {
         val desktopMain by getting
         
         androidMain.dependencies {
+
             implementation(compose.preview)
-            implementation(libs.androidx.activity.compose)
+            implementation(libs.android.activity.compose)
         }
         commonMain.dependencies {
+
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
+            implementation(compose.material3)
+            implementation(compose.materialIconsExtended)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+
+            implementation(libs.navigation)
+
+            implementation(libs.koin.core)
+
+            implementation(libs.coroutines)
+
             implementation(projects.shared)
+
+            implementation(projects.domain)
+            implementation(projects.feature.auth)
+            implementation(projects.firebase)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -97,13 +114,16 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     buildFeatures {
         compose = true
     }
     dependencies {
+
+        implementation(libs.koin.android)
+
         debugImplementation(compose.uiTooling)
     }
 }

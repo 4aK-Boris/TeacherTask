@@ -1,0 +1,43 @@
+package teacher.task.project.firebase.auth.core
+
+import dmitriy.losev.exception.API_EXCEPTION_CODE
+import dmitriy.losev.exception.AVATAR_URI_IS_NULL_EXCEPTION_CODE
+import dmitriy.losev.exception.BaseException
+import dmitriy.losev.exception.DISPLAY_NAME_IS_NULL_EXCEPTION_CODE
+import dmitriy.losev.exception.EMAIL_IS_NULL_EXCEPTION_CODE
+import dmitriy.losev.exception.EMPTY_USER_DATA
+import dmitriy.losev.exception.FIREBASE_AUTH_INVALID_CREDENTIALS_EXCEPTION_CODE
+import dmitriy.losev.exception.FIREBASE_AUTH_INVALID_USER_EXCEPTION_CODE
+import dmitriy.losev.exception.FIREBASE_AUTH_RECENT_LOGIN_REQUIRED_EXCEPTION_CODE
+import dmitriy.losev.exception.FIREBASE_AUTH_USER_COLLISION_EXCEPTION_CODE
+import dmitriy.losev.exception.FIREBASE_AUTH_WEAK_PASSWORD_EXCEPTION_CODE
+import dmitriy.losev.exception.FIREBASE_NETWORK_EXCEPTION_CODE
+import dmitriy.losev.exception.FIREBASE_TOO_MANY_REQUESTS_EXCEPTION_CODE
+import dmitriy.losev.exception.GOOGLE_AUTH_IS_NOT_SUCCESS_EXCEPTION_CODE
+import dmitriy.losev.exception.NO_PROVIDERS_EXCEPTION_CODE
+import dmitriy.losev.exception.TOKEN_AUTHENTICATION_EXCEPTION_CODE
+import dmitriy.losev.exception.UNSUPPORTED_API_CALL_EXCEPTION
+import dmitriy.losev.exception.UPLOAD_AVATAR_EXCEPTION_CODE
+import dmitriy.losev.exception.USER_NOT_AUTHORIZATION_EXCEPTION_CODE
+
+class GoogleAuthIsNotSuccessException : BaseException(extraErrorCode = GOOGLE_AUTH_IS_NOT_SUCCESS_EXCEPTION_CODE)
+class EmptyUserData : BaseException(extraErrorCode = EMPTY_USER_DATA)
+class UploadAvatarException: BaseException(extraErrorCode = UPLOAD_AVATAR_EXCEPTION_CODE)
+class TokenAuthenticationException: BaseException(extraErrorCode = TOKEN_AUTHENTICATION_EXCEPTION_CODE)
+class DisplayNameIsNullException: BaseException(extraErrorCode = DISPLAY_NAME_IS_NULL_EXCEPTION_CODE)
+class AvatarIsNullException: BaseException(extraErrorCode = AVATAR_URI_IS_NULL_EXCEPTION_CODE)
+class EmailIsNullException: BaseException(extraErrorCode = EMAIL_IS_NULL_EXCEPTION_CODE)
+class UserNotAuthorizationException: BaseException(extraErrorCode = USER_NOT_AUTHORIZATION_EXCEPTION_CODE)
+class NoProvidersException: BaseException(extraErrorCode = NO_PROVIDERS_EXCEPTION_CODE)
+
+//firebase internal exceptions
+
+class FirebaseAuthInvalidUserException: BaseException(extraErrorCode = FIREBASE_AUTH_INVALID_USER_EXCEPTION_CODE)
+class FirebaseAuthInvalidCredentialsException: BaseException(extraErrorCode = FIREBASE_AUTH_INVALID_CREDENTIALS_EXCEPTION_CODE)
+class FirebaseTooManyRequestsException: BaseException(extraErrorCode = FIREBASE_TOO_MANY_REQUESTS_EXCEPTION_CODE)
+class UnsupportedApiCallException: BaseException(extraErrorCode = UNSUPPORTED_API_CALL_EXCEPTION)
+class FirebaseAuthUserCollisionException: BaseException(extraErrorCode = FIREBASE_AUTH_USER_COLLISION_EXCEPTION_CODE)
+class FirebaseAuthRecentLoginRequiredException: BaseException(extraErrorCode = FIREBASE_AUTH_RECENT_LOGIN_REQUIRED_EXCEPTION_CODE)
+class FirebaseAuthWeakPasswordException: BaseException(extraErrorCode = FIREBASE_AUTH_WEAK_PASSWORD_EXCEPTION_CODE)
+class ApiException: BaseException(extraErrorCode = API_EXCEPTION_CODE)
+class FirebaseNetworkException: BaseException(extraErrorCode = FIREBASE_NETWORK_EXCEPTION_CODE)

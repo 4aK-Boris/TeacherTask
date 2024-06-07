@@ -1,0 +1,8 @@
+package dmitriy.losev.exception
+
+const val SAFE_CALL_FAIL = -1
+const val RESULT_MAP_EXCEPTION_CODE = 0
+const val NULLABLE_EXCEPTION_CODE = -2
+
+const val VK_FAILED_AUTHENTICATION_EXCEPTION_CODE = 200
+const val YANDEX_NULL_TOKEN_EXCEPTION_CODE = 201
